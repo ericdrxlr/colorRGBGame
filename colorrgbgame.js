@@ -19,4 +19,14 @@ colorDisplay.innerHTML = pickedColor;
 for(var i = 0; i < squares.length; i++){
     // apply colors from array to respective squares
     squares[i].style.backgroundColor = colors[i];
+    // add click listeners to squares
+    squares[i].addEventListener("click", function(){
+        var clickedColor = this.style.backgroundColor;
+        console.log(clickedColor, pickedColor);
+        if(clickedColor === pickedColor){
+            squares[i].style.backgroundColor = clickedColor;
+        } else {
+            this.style.backgroundColor = "#232323";
+        }
+    })
 }
