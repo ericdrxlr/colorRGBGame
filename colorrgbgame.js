@@ -9,8 +9,14 @@ let colors = [
 ];
 
 // QUERY SELECTORS
-let squares = document.querySelectorAll(".square");
+var squares = document.querySelectorAll(".square");
+let pickedColor = colors[3];
+var colorDisplay = document.querySelector("#colorDisplay");
 
+colorDisplay.innerHTML = pickedColor;
+
+// LOOP THROUGH SQUARES
 for(var i = 0; i < squares.length; i++){
+    // apply colors from array to respective squares
     squares[i].style.backgroundColor = colors[i];
 }
