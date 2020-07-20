@@ -12,6 +12,9 @@ let resetButton = document.querySelector("#reset");
 let easyBtn = document.querySelector("#easyBtn");
 let hardBtn = document.querySelector("#hardBtn");
 
+colorDisplay.innerHTML = pickedColor;
+
+// EASY BUTTON CODE
 easyBtn.addEventListener("click", function(){
     easyBtn.classList.add("selected");
     hardBtn.classList.remove("selected");
@@ -28,6 +31,7 @@ easyBtn.addEventListener("click", function(){
     }
 })
 
+// HARD BUTTON CODE
 hardBtn.addEventListener("click", function(){
     easyBtn.classList.remove("selected");
     hardBtn.classList.add("selected");
@@ -41,7 +45,7 @@ hardBtn.addEventListener("click", function(){
     }
 })
 
-
+// RESET GAME
 resetButton.addEventListener("click", function(){
     // generate all new colors
     colors = generateRandomColors(numSquares);
@@ -53,12 +57,10 @@ resetButton.addEventListener("click", function(){
     for(var i = 0; i < squares.length; i++){
         squares[i].style.backgroundColor = colors[i];
     }
-    })
+    h1.style.backgroundColor = "steelblue";
+})
 
-
-colorDisplay.innerHTML = pickedColor;
-
-// LOOP THROUGH SQUARES
+// GAME SET BY LOOPING THROUGH SQUARES
 for(var i = 0; i < squares.length; i++){
     // apply colors from array to respective squares
     squares[i].style.backgroundColor = colors[i];
@@ -76,6 +78,7 @@ for(var i = 0; i < squares.length; i++){
     })
 }
 
+// FUNCTIONS
 function changeColors(color){
     // loop through squares
     for(var i = 0; i < squares.length; i++){
