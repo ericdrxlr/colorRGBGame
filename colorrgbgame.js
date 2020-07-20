@@ -25,9 +25,18 @@ for(var i = 0; i < squares.length; i++){
         var clickedColor = this.style.backgroundColor;
         if(clickedColor === pickedColor){
             messageDisplay.innerHTML = "Correct!";
+            changeColors(clickedColor);
         } else {
             this.style.backgroundColor = "#232323";
             messageDisplay.innerHTML = "Try Again";
         }
     })
+}
+
+function changeColors(color){
+    // loop through squares
+    for(var i = 0; i < squares.length; i++){
+        // change each color to match given color
+       squares[i].style.backgroundColor = color; 
+    }
 }
