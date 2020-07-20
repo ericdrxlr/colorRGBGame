@@ -10,7 +10,7 @@ let colors = [
 
 // QUERY SELECTORS
 var squares = document.querySelectorAll(".square");
-let pickedColor = colors[3];
+let pickedColor = pickColor();
 var colorDisplay = document.querySelector("#colorDisplay");
 var messageDisplay = document.querySelector("#message");
 
@@ -39,4 +39,9 @@ function changeColors(color){
         // change each color to match given color
        squares[i].style.backgroundColor = color; 
     }
+}
+
+function pickColor(){
+    var random = Math.floor(Math.random() * colors.length);
+    return colors[random];
 }
