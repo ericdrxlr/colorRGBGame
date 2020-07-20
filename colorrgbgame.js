@@ -1,9 +1,10 @@
-// ARRAY OF COLORS
+// VARIABLES
 let colors = generateRandomColors(6);
+let pickedColor = pickColor();
+let numSquares = 6;
 
 // QUERY SELECTORS
 let squares = document.querySelectorAll(".square");
-let pickedColor = pickColor();
 let colorDisplay = document.querySelector("#colorDisplay");
 let messageDisplay = document.querySelector("#message");
 let h1 = document.querySelector("h1");
@@ -14,7 +15,8 @@ let hardBtn = document.querySelector("#hardBtn");
 easyBtn.addEventListener("click", function(){
     easyBtn.classList.add("selected");
     hardBtn.classList.remove("selected");
-    colors = generateRandomColors(3);
+    numSquares = 3;
+    colors = generateRandomColors(numSquares);
     pickedColor = pickColor();
     colorDisplay.innerHTML = pickedColor;
     for(var i = 0; i < squares.length; i++){
@@ -29,7 +31,8 @@ easyBtn.addEventListener("click", function(){
 hardBtn.addEventListener("click", function(){
     easyBtn.classList.remove("selected");
     hardBtn.classList.add("selected");
-    colors = generateRandomColors(6);
+    numSquares = 6;
+    colors = generateRandomColors(numSquares);
     pickedColor = pickColor();
     colorDisplay.innerHTML = pickedColor;
     for(var i = 0; i < squares.length; i++){ 
@@ -41,7 +44,7 @@ hardBtn.addEventListener("click", function(){
 
 resetButton.addEventListener("click", function(){
     // generate all new colors
-    colors = generateRandomColors(6);
+    colors = generateRandomColors(numSquares);
     // pick new random color from array
     pickedColor = pickColor();
     // change colorDisplay match pickedColor
