@@ -2,10 +2,26 @@
 let colors = generateRandomColors(6);
 
 // QUERY SELECTORS
-var squares = document.querySelectorAll(".square");
+let squares = document.querySelectorAll(".square");
 let pickedColor = pickColor();
-var colorDisplay = document.querySelector("#colorDisplay");
-var messageDisplay = document.querySelector("#message");
+let colorDisplay = document.querySelector("#colorDisplay");
+let messageDisplay = document.querySelector("#message");
+let h1 = document.querySelector("h1");
+let resetButton = document.querySelector("#reset");
+
+resetButton.addEventListener("click", function(){
+    // generate all new colors
+    colors = generateRandomColors(6);
+    // pick new random color from array
+    pickedColor = pickColor();
+    // change colorDisplay match pickedColor
+    colorDisplay.innerHTML = pickedColor;
+    // change color of squares
+    for(var i = 0; i < squares.length; i++){
+        squares[i].style.backgroundColor = colors[i];
+    }
+    })
+
 
 colorDisplay.innerHTML = pickedColor;
 
@@ -15,9 +31,10 @@ for(var i = 0; i < squares.length; i++){
     squares[i].style.backgroundColor = colors[i];
     // add click listeners to squares
     squares[i].addEventListener("click", function(){
-        var clickedColor = this.style.backgroundColor;
+        let clickedColor = this.style.backgroundColor;
         if(clickedColor === pickedColor){
             messageDisplay.innerHTML = "Correct!";
+            h1.style.backgroundColor = clickedColor;
             changeColors(clickedColor);
         } else {
             this.style.backgroundColor = "#232323";
