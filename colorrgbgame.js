@@ -9,57 +9,81 @@ let colorDisplay = document.querySelector("#colorDisplay");
 let messageDisplay = document.querySelector("#message");
 let h1 = document.querySelector("h1");
 let resetButton = document.querySelector("#reset");
-let easyBtn = document.querySelector("#easyBtn");
-let hardBtn = document.querySelector("#hardBtn");
+let modeButtons = document.querySelectorAll(".mode");
 
 colorDisplay.innerHTML = pickedColor;
 
-// EASY BUTTON CODE
-easyBtn.addEventListener("click", function(){
-    easyBtn.classList.add("selected");
-    hardBtn.classList.remove("selected");
-    numSquares = 3;
-    colors = generateRandomColors(numSquares);
-    pickedColor = pickColor();
-    colorDisplay.innerHTML = pickedColor;
-    for(var i = 0; i < squares.length; i++){
-        if(colors[i]){
-            squares[i].style.backgroundColor = colors[i];
-        } else {
-            squares[i].style.display = "none";
-        }
-    }
-})
+for(var i = 0; i < modeButtons.length; i++){
+    modeButtons[i].addEventListener("click", function(){
+        modeButtons[0].classList.remove("selected");
+        modeButtons[1].classList.remove("selected");
+        this.classList.add("selected");
+        this.innerHTML === "Easy" ? numSquares = 3: numSquares = 6;
+        // if(this.innerHTML === "Easy"){
+        //     numSquares = 3;
+        // } else {
+        //     numSquares = 6;
+        // }
+        reset();
+    })
+}
 
-// HARD BUTTON CODE
-hardBtn.addEventListener("click", function(){
-    easyBtn.classList.remove("selected");
-    hardBtn.classList.add("selected");
-    numSquares = 6;
-    colors = generateRandomColors(numSquares);
-    pickedColor = pickColor();
-    colorDisplay.innerHTML = pickedColor;
-    for(var i = 0; i < squares.length; i++){ 
-        squares[i].style.backgroundColor = colors[i];
-        squares[i].style.display = "block";
-    }
-})
+function reset(){
+     // generate all new colors
+     colors = generateRandomColors(numSquares);
+     // pick new random color from array
+     pickedColor = pickColor();
+     messageDisplay.innerHTML = "";
+     resetButton.innerHTML = "New Colors";
+     // change colorDisplay match pickedColor
+     colorDisplay.innerHTML = pickedColor;
+     // change color of squares
+     for(var i = 0; i < squares.length; i++){
+         if(colors[i]){
+             squares[i].style.backgroundColor = colors[i];
+             squares[i].style.display = "block";
+            } else {
+            squares[i].style.display = "none";
+         }
+     }
+     h1.style.backgroundColor = "steelblue";
+}
+
+//                         ONE OPTION OF EASY/HARD MODE
+// EASY BUTTON CODE
+// easyBtn.addEventListener("click", function(){
+//     easyBtn.classList.add("selected");
+//     hardBtn.classList.remove("selected");
+//     numSquares = 3;
+//     colors = generateRandomColors(numSquares);
+//     pickedColor = pickColor();
+//     colorDisplay.innerHTML = pickedColor;
+//     for(var i = 0; i < squares.length; i++){
+//         if(colors[i]){
+//             squares[i].style.backgroundColor = colors[i];
+//         } else {
+//             squares[i].style.display = "none";
+//         }
+//     }
+// })
+
+// // HARD BUTTON CODE
+// hardBtn.addEventListener("click", function(){
+//     easyBtn.classList.remove("selected");
+//     hardBtn.classList.add("selected");
+//     numSquares = 6;
+//     colors = generateRandomColors(numSquares);
+//     pickedColor = pickColor();
+//     colorDisplay.innerHTML = pickedColor;
+//     for(var i = 0; i < squares.length; i++){ 
+//         squares[i].style.backgroundColor = colors[i];
+//         squares[i].style.display = "block";
+//     }
+// })
 
 // RESET GAME
 resetButton.addEventListener("click", function(){
-    // generate all new colors
-    colors = generateRandomColors(numSquares);
-    // pick new random color from array
-    pickedColor = pickColor();
-    messageDisplay.innerHTML = "";
-    this.innerHTML = "New Colors";
-    // change colorDisplay match pickedColor
-    colorDisplay.innerHTML = pickedColor;
-    // change color of squares
-    for(var i = 0; i < squares.length; i++){
-        squares[i].style.backgroundColor = colors[i];
-    }
-    h1.style.backgroundColor = "steelblue";
+    reset();
 })
 
 // GAME SET BY LOOPING THROUGH SQUARES
