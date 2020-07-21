@@ -11,10 +11,18 @@ let h1 = document.querySelector("h1");
 let resetButton = document.querySelector("#reset");
 let modeButtons = document.querySelectorAll(".mode");
 
+// START GAME
 init();
 
+// FUNCTIONS
 function init(){
+    setupModeButtons();
+    setupSquares();
+    reset();
+}
+
 // CHOOSE EASY/HARD MODE REFACTORED
+function setupModeButtons(){
     for(var i = 0; i < modeButtons.length; i++){
         modeButtons[i].addEventListener("click", function(){
             modeButtons[0].classList.remove("selected");
@@ -24,7 +32,9 @@ function init(){
             reset();
         });
     }
+}
 // ACCORD COLORS TO SQUARES
+function setupSquares(){
     for(var i = 0; i < squares.length; i++){
         // add click listeners to squares
         squares[i].addEventListener("click", function(){
@@ -41,7 +51,6 @@ function init(){
             }
         });
     }
-    reset();
 }
 
 function reset(){
@@ -64,8 +73,6 @@ function reset(){
      }
      h1.style.backgroundColor = "steelblue";
 }
-
-
 
 // RESET GAME
 resetButton.addEventListener("click", function(){
