@@ -74,8 +74,8 @@ function reset(){
      h1.style.backgroundColor = "steelblue";
 }
 
-// RESET GAME
-resetButton.addEventListener("click", function(){
+// RESET GAME refactored with jQuery
+$("#reset").on('click', function(){
     reset();
 })
 
@@ -155,3 +155,8 @@ function randomColor(){
 //         squares[i].style.display = "block";
 //     }
 // })
+
+//  RESET GAME
+//resetButton.addEventListener("click", function(){
+    // reset();
+//})
